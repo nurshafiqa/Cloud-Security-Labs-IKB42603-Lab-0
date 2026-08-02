@@ -183,18 +183,6 @@ The following dummy credentials are used only for LocalStack. They do not provid
 
 ![Evidence of AWS CLI configuration and get-caller-identity output on LocalStack](./Evidence/aws-cli-localstack-config-and-sts.png)
 
-## Pre-Lab Verification Checklist
-
-| Check | Status |
-| --- | --- |
-| Docker Desktop installed and working | Completed |
-| AWS CLI Version 2 installed | Completed |
-| kind installed | Completed |
-| kubectl installed | Completed |
-| OpenSSL verified | Completed |
-| oathtool verified | Completed |
-| LocalStack healthy | Completed |
-| AWS CLI communicates with LocalStack | Completed |
 
 ## Conclusion
 
