@@ -24,7 +24,8 @@ Screenshots referenced throughout this report are kept in the `evidence lab1` fo
 | `01-caller-identity.png` | `sts get-caller-identity` result confirming the CLI is pointed at LocalStack |
 | `02-admin-group-setup.png` | Group + admin user creation, membership added, and `get-group` verification (Task 2) |
 | `03-analyst-user-policy.png` | `Analyst_piqa` created with only `AmazonS3ReadOnlyAccess` attached (Task 3) |
-| `04-access-key-rotated.png` | Access key deactivated (rotated), confirmed via `list-access-keys` (Task 4) |
+| `04a-access-key-created.png` | Access key created for `Analyst_piqa`, status `Active` (Task 4, before rotation) |
+| `04b-access-key-rotated.png` | Access key deactivated (rotated), confirmed via `list-access-keys` (Task 4, after rotation) |
 | `05-kind-cluster-setup.png` | `kind` cluster verified up and node `Ready` |
 | `06-namespaces-created.png` | `dev` and `prod` namespaces created (Task 5) |
 | `07-role-rolebinding-setup.png` | ServiceAccount, Role, and RoleBinding all created (Task 6) |
@@ -185,9 +186,22 @@ aws $EP iam update-access-key --user-name Analyst_piqa \
   --access-key-id <AccessKeyId> --status Inactive
 aws $EP iam list-access-keys --user-name Analyst_piqa
 ```
-**Explanation:** A key pair is generated so `Analyst_piqa` can authenticate programmatically instead of through a console login. The secret value only appears once at creation time and cannot be retrieved again afterward, so it needs to be captured immediately if it's ever needed (and kept out of screenshots submitted for this report). Deactivating rather than deleting the key mimics a real rotation workflow — a new key would normally take over first, with the old one switched off afterward. Keeping keys short-lived limits how much damage a leaked one could do before anyone notices.
+**Explanation:** A key pair is generated so `Analyst_piqa` can authenticate programmatically instead of through a console login. The secret value only appears once at creation time and cannot be retrieved again afterward, so it needs to be captured immediately if it's ever needed (and kept out of screenshots submitted for this report — the `AccessKeyId` and `SecretAccessKey` are redacted below). Deactivating rather than deleting the key mimics a real rotation workflow — a new key would normally take over first, with the old one switched off afterward. Keeping keys short-lived limits how much damage a leaked one could do before anyone notices.
 
-**Output:**
+**Output (before rotation):**
+```
+{
+    "AccessKey": {
+        "UserName": "Analyst_piqa",
+        "AccessKeyId": "[redacted]",
+        "Status": "Active",
+        "SecretAccessKey": "[redacted]",
+        "CreateDate": "2026-08-05T11:36:32.476158+00:00"
+    }
+}
+```
+
+**Output (after rotation):**
 ```
 {
     "AccessKeyMetadata": [
@@ -203,7 +217,9 @@ aws $EP iam list-access-keys --user-name Analyst_piqa
 
 **Evidence:**
 
-![Access key deactivated, status confirmed Inactive](evidence%20lab1/04-access-key-rotated.png)
+![Access key created, status Active before rotation](evidence%20lab1/04a-access-key-created.png)
+
+![Access key deactivated, status confirmed Inactive after rotation](evidence%20lab1/04b-access-key-rotated.png)
 
 *End of Session A.*
 
