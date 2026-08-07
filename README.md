@@ -1,1 +1,1 @@
-# Cloud-Security-Labs-IKB42603-Lab-0
+# IKB42603-Cloud-Computing-Security-Essentials
