@@ -177,8 +177,6 @@ The following dummy credentials are used only for LocalStack. They do not provid
    aws $EP sts get-caller-identity
    ```
 
-![Evidence of AWS CLI LocalStack configuration](evidence%20lab0/aws-cli-localstack-sts.png)
-
 ![Evidence of AWS CLI configuration and get-caller-identity output on LocalStack](evidence%20lab0/aws-cli-localstack-config-and-sts.png)
 
 ## Pre-Lab Verification Checklist
