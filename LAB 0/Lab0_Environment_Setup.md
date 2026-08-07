@@ -13,7 +13,7 @@ The objective of this lab is to prepare a local workstation for the Cloud Comput
 
 ## Environment Summary
 
-The following software and tools were prepared successfully. Supporting screenshots are stored in the `Evidence/` folder.
+The following software and tools were prepared successfully. Supporting screenshots are stored in the `evidence lab0/` folder.
 
 | Component | Verification command | Evidence file |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ Chocolatey is a Windows package manager used to install kind and kubectl.
 choco --version
 ```
 
-![Evidence of Chocolatey installation](./Evidence/chocolatey-version.png)
+![Evidence of Chocolatey installation](evidence%20lab0/chocolatey-version.png)
 
 ### Docker Desktop
 
@@ -54,7 +54,7 @@ Docker provides the container platform required to run LocalStack and other cont
    docker run --rm hello-world
    ```
 
-![Evidence of Docker installation](./Evidence/docker-version-and-hello-world.png)
+![Evidence of Docker installation](evidence%20lab0/docker-version-and-hello-world.png)
 
 ### AWS CLI Version 2
 
@@ -69,7 +69,7 @@ AWS CLI is used to run AWS commands. In this lab, it communicates with LocalStac
    aws --version
    ```
 
-![Evidence of AWS CLI installation](./Evidence/aws-cli-version.png)
+![Evidence of AWS CLI installation](evidence%20lab0/aws-cli-version.png)
 
 ### kind
 
@@ -88,9 +88,9 @@ kind (Kubernetes IN Docker) creates local Kubernetes clusters using Docker.
    kind --version
    ```
 
-![Evidence of kind installation](./Evidence/kind-installation.png)
+![Evidence of kind installation](evidence%20lab0/kind-installation.png)
 
-![Evidence of kind version](./Evidence/kind-version.png)
+![Evidence of kind version](evidence%20lab0/kind-version.png)
 
 ### kubectl
 
@@ -109,9 +109,9 @@ kind (Kubernetes IN Docker) creates local Kubernetes clusters using Docker.
    kubectl version --client
    ```
 
-![Evidence of kubectl installation](./Evidence/kubectl-installation.png)
+![Evidence of kubectl installation](evidence%20lab0/kubectl-installation.png)
 
-![Evidence of kubectl version](./Evidence/kubectl-version.png)
+![Evidence of kubectl version](evidence%20lab0/kubectl-version.png)
 
 ### Helper Tools
 
@@ -130,9 +130,9 @@ OpenSSL is used for cryptographic operations, while oathtool supports one-time p
    oathtool --version
    ```
 
-![Evidence of helper tools](./Evidence/helper-tools.png)
+![Evidence of helper tools](evidence%20lab0/helper-tools.png)
 
-![Evidence of oathtool installation](./Evidence/oathtool-version.png)
+![Evidence of oathtool installation](evidence%20lab0/oathtool-version.png)
 
 ## Start and Verify LocalStack
 
@@ -148,11 +148,9 @@ docker ps
 
 ### Evidence
 
-![LocalStack container and health check](./Evidence/localstack-container-and-health.png)
+![LocalStack container and health check](evidence%20lab0/localstack-container-and-health.png)
 
-![LocalStack Resource Browser](./Evidence/localstack-resource-browser.png)
-
-
+![LocalStack Resource Browser](evidence%20lab0/localstack-resource-browser.png)
 
 ## AWS CLI Configuration for LocalStack
 
@@ -179,10 +177,22 @@ The following dummy credentials are used only for LocalStack. They do not provid
    aws $EP sts get-caller-identity
    ```
 
+![Evidence of AWS CLI LocalStack configuration](evidence%20lab0/aws-cli-localstack-sts.png)
 
+![Evidence of AWS CLI configuration and get-caller-identity output on LocalStack](evidence%20lab0/aws-cli-localstack-config-and-sts.png)
 
-![Evidence of AWS CLI configuration and get-caller-identity output on LocalStack](./Evidence/aws-cli-localstack-config-and-sts.png)
+## Pre-Lab Verification Checklist
 
+| Check | Status |
+| --- | --- |
+| Docker Desktop installed and working | Completed |
+| AWS CLI Version 2 installed | Completed |
+| kind installed | Completed |
+| kubectl installed | Completed |
+| OpenSSL verified | Completed |
+| oathtool verified | Completed |
+| LocalStack healthy | Completed |
+| AWS CLI communicates with LocalStack | Completed |
 
 ## Conclusion
 
